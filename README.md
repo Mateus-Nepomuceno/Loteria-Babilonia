@@ -4,5 +4,4 @@ Aplicativo em **Streamlit** que sorteia um número entre 1 e 15. O jogador tem t
 
 Status: **Finalizado.**
 
-Disponível em: 
-
+Acesse aqui: [App Loteria](https://loteria-da-babilonia.streamlit.app/)
