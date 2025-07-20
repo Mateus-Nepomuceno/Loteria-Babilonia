@@ -8,22 +8,28 @@ def novo_sorteio():
 
 def verificar_sorteio():
     if st.session_state.usuario is None:
-        st.error("Por favor, insira um número!")
+        st.error("Por favor, insira um número válido!")
         return
+    if 1 <= st.session_state.usuario <=15:
+        if st.session_state.usuario == st.session_state.sorteio:
+            st.success("Parabéns, você acertou o número!")
+            st.balloons()
+            st.session_state.chances = 0
 
-    if st.session_state.usuario == st.session_state.sorteio:
-        st.success("Parabéns, você acertou o número!")
-        st.balloons()
-        st.session_state.chances = 0
-
-    elif st.session_state.usuario > st.session_state.sorteio:
-        st.warning("O número é menor.")
-        st.session_state.chances -=1
-
+        elif st.session_state.usuario > st.session_state.sorteio:
+            st.session_state.chances -=1
+            if st.session_state.chances > 0:
+                st.warning("O número é menor.")
+            else:
+                st.error(f"Suas tentativas acabaram! O número era {st.session_state.sorteio}")
+        else:
+            st.session_state.chances -=1
+            if st.session_state.chances > 0:
+                st.warning("O número é maior.")
+            else:
+                st.error(f"Suas tentativas acabaram! O número era {st.session_state.sorteio}")
     else:
-        st.warning("O número é maior.")
-        st.session_state.chances -=1
-        
+         return
 
 if 'sorteio' not in st.session_state:
     novo_sorteio() 
