@@ -7,9 +7,6 @@ def novo_sorteio():
             st.session_state.usuario = None
 
 def verificar_sorteio():
-    if st.session_state.usuario is None:
-        st.error("Por favor, insira um número válido!")
-        return
     if 1 <= st.session_state.usuario <=15:
         if st.session_state.usuario == st.session_state.sorteio:
             st.success("Parabéns, você acertou o número!")
@@ -43,7 +40,7 @@ st.session_state.usuario = st.number_input(
     "Entre com um valor de 1 até 15:",
     min_value=1,
     max_value=15,
-    value=None,
+    value=1,
     disabled=desativar
 )    
 
